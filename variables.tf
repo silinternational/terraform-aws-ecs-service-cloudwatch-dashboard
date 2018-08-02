@@ -15,7 +15,7 @@ variable "dashboard_name" {
   type = "string"
 }
 
-variable "service_name" {
-  description = "The exact name of the service"
-  type = "string"
+variable "service_names" {
+  description = "A list of the exact names of the services to show on the dashboard"
+  type = "list"
 }
