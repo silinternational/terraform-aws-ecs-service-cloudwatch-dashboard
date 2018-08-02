@@ -5,7 +5,7 @@ resource "aws_cloudwatch_dashboard" "main" {
 }
 
 data "template_file" "dashboard_body" {
-  template = "${file("dashboard-template.json")}"
+  template = "${file("${path.module}/dashboard-template.json")}"
 
   vars {
     aws_region = "${var.aws_region}"
