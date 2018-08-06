@@ -1,4 +1,3 @@
-
 resource "aws_cloudwatch_dashboard" "main" {
   dashboard_name = "${var.dashboard_name}"
   dashboard_body = "${data.template_file.dashboard_body.rendered}"
@@ -17,7 +16,7 @@ data "template_file" "widgets" {
   template = "${file("${path.module}/widget-template.json")}"
 
   vars {
-    aws_region = "${var.aws_region}"
+    aws_region   = "${var.aws_region}"
     cluster_name = "${var.cluster_name}"
     service_name = "${element(var.service_names, count.index)}"
   }
