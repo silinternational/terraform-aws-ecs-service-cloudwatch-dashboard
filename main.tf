@@ -5,17 +5,6 @@ resource "aws_cloudwatch_dashboard" "main" {
   })
 }
 
-data "template_file" "widgets" {
-  count    = length(var.service_names)
-  template = file("${path.module}/widget-template.json")
-
-  vars = {
-    aws_region   = var.aws_region
-    cluster_name = var.cluster_name
-    service_name = element(var.service_names, count.index)
-  }
-}
-
 locals {
   widgets = [for service_name in var.service_names : {
     type   = "metric"
