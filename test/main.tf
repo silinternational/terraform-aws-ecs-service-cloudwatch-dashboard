@@ -3,7 +3,7 @@ module "simple" {
 
   cluster_name   = "cluster"
   dashboard_name = "dashboard"
-  service_names  = "service"
+  service_names  = ["service"]
 }
 
 module "full" {
@@ -11,5 +11,5 @@ module "full" {
 
   cluster_name   = "cluster"
   dashboard_name = "dashboard"
-  service_names  = "service"
+  service_names  = ["service1", "service2"]
 }
