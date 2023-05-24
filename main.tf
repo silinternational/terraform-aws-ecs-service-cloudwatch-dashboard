@@ -5,7 +5,11 @@ resource "aws_cloudwatch_dashboard" "main" {
   })
 }
 
+data "aws_region" "current" {}
+
 locals {
+  aws_region = data.aws_region.current
+
   widgets = [for service_name in var.service_names : {
     type   = "metric"
     width  = 18
@@ -17,7 +21,7 @@ locals {
         ["AWS/ECS", "CPUUtilization", "ServiceName", service_name, "ClusterName", var.cluster_name, { color = "#d62728", stat = "Maximum" }],
         [".", "MemoryUtilization", ".", ".", ".", ".", { yAxis = "right", color = "#1f77b4", stat = "Maximum" }]
       ]
-      region = var.aws_region,
+      region = local.aws_region,
       annotations = {
         horizontal = [
           {
