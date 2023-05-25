@@ -1,8 +1,3 @@
-variable "aws_region" {
-  default     = "us-east-1"
-  description = "The AWS Region"
-  type        = string
-}
 
 variable "cluster_name" {
   description = "The exact name of the cluster"
