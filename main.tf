@@ -8,7 +8,7 @@ resource "aws_cloudwatch_dashboard" "main" {
 data "aws_region" "current" {}
 
 locals {
-  aws_region = data.aws_region.current
+  aws_region = data.aws_region.current.name
 
   widgets = [for service_name in var.service_names : {
     type   = "metric"
